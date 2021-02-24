@@ -7955,16 +7955,8 @@ while((auswahl = getopt_long(argc, argv, short_options, long_options, &index)) !
 		case HCX_PCAPNG_NAME:
 		if(strcmp(optarg, "-") == 0)
 			{
-			if(isatty(STDOUT_FILENO) == 1)
-				{
-				fprintf(stderr, "stdout is a terminal, won't output pcapng there\n");
-				exit (EXIT_FAILURE);
-				}
-			else
-				{
-				fd_pcapng = fileno(stdout);
-				stdout = fopen("/dev/null", "w");
-				}
+			fprintf(stderr, "stdout is a terminal, won't output pcapng there\n");
+			exit (EXIT_FAILURE);
 			}
 		pcapngoutname = optarg;
 		break;
